@@ -24,9 +24,9 @@ This project contains Playwright test examples that align with the Python fundam
    source venv/bin/activate  # On Windows, use: venv\Scripts\activate
    ```
 
-3. Install Playwright and its dependencies:
+3. Install dependencies:
    ```bash
-   pip install pytest-playwright
+   pip install -r requirements.txt
    ```
 
 4. Install the required browsers:
