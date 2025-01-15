@@ -169,3 +169,17 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Project specific
+config.py
+test-results/
+__pycache__/
+.pytest_cache/
+*.pyc
+.coverage
+htmlcov/
+.env
+
+# Virtual Environment
+venv/
+env/
