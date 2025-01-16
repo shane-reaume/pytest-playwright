@@ -1,46 +1,37 @@
-from conftest import describe, it, page
+from conftest import describe, it
 
-@describe("Exercise 1a")
-class TestExercise1a:
-    @it("Should validate basic comparison operators")
-    def test_comparison_operators(self, page):
-        """Tests basic comparison operators in Python"""
-        # Equal and not equal
-        assert 10 != 5, "Not equal operator failed"
-        assert 10 == 10, "Equal operator failed"
+@describe("Silly Unit Tests")
+class TestSillyUnitTests:
+    @it("Should validate hello world")
+    def test_hello_world(self, capsys):
+        """
+        The goal of this Challenge is to write a short program in Python that 
+        prints out the phrase "Hello world!"
+        """
+        # Execute the actual print statement - this is the code we're testing
+        print("Hello World!")
         
-        # Greater than and greater than or equal
-        assert 10 > 5, "Greater than operator failed"
-        assert 10 >= 10, "Greater than or equal operator failed"
-        
-        # Less than and less than or equal
-        assert 10 < 20, "Less than operator failed"
-        assert 10 <= 10, "Less than or equal operator failed"
+        # Get the captured output and verify it
+        captured = capsys.readouterr()
+        assert captured.out.strip() == "Hello World!"
 
-    @it("Should validate boolean operators")
-    def test_boolean_operators(self, page):
-        """Tests boolean operators and complex expressions"""
-        # Basic boolean operations
-        assert True and True, "AND operator with True values failed"
-        assert True or False, "OR operator with mixed values failed"
-        assert not False, "NOT operator failed"
+    @it("Should validate comments")
+    def test_comments(self, capsys):
+        """
+        The goal of this Challenge is to write a short program in Python that 
+        comments out the print statement that prints "Hello world!"
+        """
+        # observe comments are # and als""
+        # print("Hello World!")
         
-        # Complex boolean expressions
-        assert (True and False) == False, "Complex AND expression failed"
-        assert (5 > 3) and (10 < 20), "Comparison with AND failed"
-        assert (5 > 3) or (10 < 5), "Comparison with OR failed"
-        assert not (5 == 5) == False, "Complex NOT expression failed"
-        
-        # Multiple conditions
-        assert (5 > 3) and (10 < 20) and (10 == 10), "Multiple AND conditions failed"
-        
-        # Common mistakes and corrections
-        # WRONG: assert 5 < 1 or 2  # This would be a syntax error
-        # Correct:
-        assert ((5 < 1) or (5 < 2)) == False, "Proper boolean comparison failed"
+        # Get the captured output and verify it
+        captured = capsys.readouterr()
+        # The output should not contain "Hello World!"
+        assert captured.out.strip() != "Hello World!"
+      
 
-    @it("Should validate basic data types")
-    def test_types(self, page):
+    @it("Should validate types")
+    def test_types(self, capsys):
         """
         The goal of this Challenge is to verify Python's basic data types
         """
@@ -54,7 +45,7 @@ class TestExercise1a:
         # Numeric types
         assert type(1) is int
         assert type(1.0) is float
-                
+
         # String types (all variations are str type)
         assert type("Hello") is str
         assert type('Hello') is str
@@ -68,8 +59,8 @@ class TestExercise1a:
         assert isinstance(1.0, float)
         assert isinstance("Hello", str)
 
-@describe("Exercise 1b")
-class TestExercise1b:
+@describe("Arithmetic Operators")
+class TestArithmeticOperators:
     @it("Should validate basic arithmetic operators")
     def test_basic_arithmetic(self):
         # Addition

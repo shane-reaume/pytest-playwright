@@ -183,3 +183,6 @@ htmlcov/
 # Virtual Environment
 venv/
 env/
+
+# Pycharm
+.idea/

@@ -49,12 +49,3 @@ def luma_test_class_page(request, browser_type_launch_args):
     # Teardown once all tests in the class are done
     context.close()
     browser.close()
-
-@pytest.fixture(scope="class")
-def track_class_time(request):
-    """Record the time when the test class starts and ends."""
-    start_time = time.time()
-    yield
-    end_time = time.time()
-    elapsed = end_time - start_time
-    print(f"\n[TIMING] Total time for {request.cls.__name__}: {elapsed:.2f} seconds")
