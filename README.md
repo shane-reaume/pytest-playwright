@@ -8,6 +8,16 @@ A template for setting up browser testing with Playwright in Python, using pytes
 - **Ready-to-Use Test Structure**: Pre-configured with best practices and patterns
 - **Custom Fixtures**: Examples of both per-test and per-class browser sessions
 - **BDD-Style Tests**: Using `@describe` and `@it` decorators for readable tests
+
+```python
+@describe("Feature or component being tested")
+class TestSomething:
+    @it("should perform specific action")
+    def test_specific_action(self, luma_test_page):
+        # Your test code here
+        pass
+```
+
 - **Convenient CLI**: Simple command runner for various test scenarios
 - **Example Tests**: Includes both unit tests and browser automation examples
 
@@ -203,7 +213,7 @@ python scripts.py help
 
 ## Writing Tests
 
-We use a BDD-style syntax for better readability:
+Describe it! We use a BDD-style like syntax ( similar to Mocha or Jest) for better readability:
 
 ```python
 @describe("Feature or component being tested")
