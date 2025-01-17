@@ -10,12 +10,15 @@ A template for setting up browser testing with Playwright in Python, using pytes
 - **BDD-Style Tests**: Using `@describe` and `@it` decorators for readable tests
 
 ```python
+from playwright.sync_api import Page
+from conftest import describe, it
+
 @describe("Feature or component being tested")
 class TestSomething:
     @it("should perform specific action")
-    def test_specific_action(self, luma_test_page):
-        # Your test code here
-        pass
+    def test_specific_action(self, page: Page):
+        page.goto("https://shaneofalltrades.com")
+        assert "Shane Of All Trades" in page.title()
 ```
 
 - **Convenient CLI**: Simple command runner for various test scenarios
