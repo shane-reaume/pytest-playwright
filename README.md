@@ -84,6 +84,68 @@ your-test-project/
 └── requirements.txt         # Project dependencies
 ```
 
+## Demo Setup
+
+This template uses [Magento's demo site](https://magento.softwaretestingboard.com/) for example tests. To get started:
+
+1. Create an account on the demo site:
+   - Visit https://magento.softwaretestingboard.com/
+   - Click "Create an Account"
+   - Fill in your details and create your account
+   - Save your login credentials
+
+2. Set up your configuration:
+   - Copy `config.example.py` to `config.py`
+   - Update the TEST_USER dictionary with your demo site credentials:
+
+   ```python
+   TEST_USER = {
+       "first_name": "Your_First_Name",
+       "last_name": "Your_Last_Name",
+       "email": "your_email@example.com",
+       "password": "Your_Password123!"
+   }
+   ```
+
+### Understanding Login Scopes
+
+This template provides two login fixtures to demonstrate different testing approaches:
+
+1. **Test-Level Login** (`luma_test_page`):
+   - Creates a fresh login for each test
+   - Ensures complete isolation between tests
+   - Best for tests that modify user data or require a clean state
+   - Example usage:
+
+   ```python
+   @it("should show user's account page")
+   def test_account_page(self, luma_test_page):
+       # Each test gets a fresh login
+       page = luma_test_page
+       assert "My Account" in page.title()
+   ```
+
+2. **Class-Level Login** (`luma_test_class_page`):
+   - Shares one login across all tests in a class
+   - More efficient for read-only operations
+   - Best for test suites that just browse or verify content
+   - Example usage:
+ 
+   ```python
+   @describe("Product browsing tests")
+   class TestBrowsing:
+       @it("should show product details")
+       def test_product_details(self, luma_test_class_page):
+           # Uses the same login across all tests in this class
+           page = luma_test_class_page
+           # Your test code here
+   ```
+
+Choose the appropriate fixture based on your test requirements:
+
+- Use `luma_test_page` when tests modify data or require isolation
+- Use `luma_test_class_page` for faster execution in read-only scenarios
+
 ## Running Tests
 
 We provide a simple command-line interface through `scripts.py`:
